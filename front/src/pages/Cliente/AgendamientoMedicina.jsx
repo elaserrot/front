@@ -1,0 +1,183 @@
+import React, { useEffect, useState } from 'react';
+import 'react-calendar/dist/Calendar.css';
+import axios from 'axios';
+import { useParams } from 'react-router-dom';
+import Swal from 'sweetalert2';
+import moment from 'moment';
+
+const BACKEND_URL = 'http://localhost:3001';
+
+const AgendamientoMedicina = () => {
+    const [selectedDate, setSelectedDate] = useState(moment().format('YYYY-MM-DDTHH:mm'));
+    const [servicio, setServicio] = useState('');
+    const [mascota, setMascota] = useState('');
+    const [mascotas, setMascotas] = useState([]);
+    const [citas, setCitas] = useState([]);
+    const [isDataUpdated, setIsDataUpdated] = useState(false);
+
+    const params = useParams();
+    const tipo = params.tipo;
+
+    const token = localStorage.getItem('token');
+    const decoded_token = JSON.parse(atob(token.split('.')[1]));
+    const id = decoded_token.id;
+
+    const handleAgendar = async (e) => {
+        e.preventDefault();
+        try {
+            const nuevaCita = {
+                Usuario: id,
+                Fecha: selectedDate,
+                Motivo: servicio,
+                Estado: 'pendiente',
+                Mascota: mascota
+            };
+
+            const response = await axios.post('http://localhost:3001/api/citas/agregarCita', nuevaCita);
+            Swal.fire({
+                icon: 'success',
+                title: 'Cita agendada con éxito',
+                showConfirmButton: false,
+                timer: 1500
+            });
+        } catch (error) {
+            console.error('Error al agendar la cita:', error);
+            Swal.fire({
+                icon: 'error',
+                title: 'Hubo un error al agendar la cita',
+                showConfirmButton: false,
+                timer: 1500
+            });
+        } finally {
+            setIsDataUpdated(true);
+        }
+    };
+
+    useEffect(() => {
+        const fetchMascotas = async () => {
+            try {
+                const response = await axios.get(`${BACKEND_URL}/api/mascota/cliente/${id}`, {
+                    headers: {
+                        Authorization: `Bearer ${token}`,
+                    },
+                });
+                setMascotas(response.data);
+            } catch (error) {
+                console.error("Error al obtener mascotas:", error);
+                Swal.fire({
+                    icon: "error",
+                    title: "Hubo un error al obtener las mascotas.",
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+            }
+        };
+
+        const fetchCitas = async () => {
+            try {
+                const response = await axios.get(`${BACKEND_URL}/api/citas/listarCitas/${id}`, {
+                    headers: {
+                        Authorization: `Bearer ${token}`,
+                    },
+                });
+                setCitas(response.data);
+            } catch (error) {
+                console.error("Error al obtener citas:", error);
+                Swal.fire({
+                    icon: "error",
+                    title: "Hubo un error al obtener las citas.",
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+            }
+        };
+
+        fetchMascotas();
+        fetchCitas();
+        setServicio(tipo);
+        setIsDataUpdated(false);
+    }, [token, id, tipo, isDataUpdated]);
+
+    return (
+        <div style={{ minHeight: '100vh' }}>
+            <div className="container rounded border shadow my-5">
+                <div className="row row-cols-1 row-cols-md-2 p-5 mt-5 align-items-center ">
+                    <div className="col justify-content-center p-5 rounded">
+                        <form onSubmit={handleAgendar}>
+                            <h2 className="text-center mb-4">Agendamiento de Medicina</h2>
+                            <label>Servicio:</label>
+                            <select
+                                value={servicio}
+                                className="form-select mb-3"
+                                onChange={(e) => setServicio(e.target.value)}
+                                required
+                            >
+                                <option disabled value="">Seleccione el servicio</option>
+                                <option value="MedicinaGeneral">Medicina General</option>
+                                <option value="ConsultaNutricional">Consulta Nutricional</option>
+                                <option value="Vacunacion">Vacunación</option>
+                                <option value="Cardiologia">Cardiologia</option>
+                                <option value="Esterilizacion">Esterilización</option>
+                            </select>
+
+                            <label>Mascota:</label>
+                            <select
+                                value={mascota}
+                                className="form-select mb-3"
+                                onChange={(e) => setMascota(e.target.value)}
+                                required
+                            >
+                                <option disabled value="">Seleccione la mascota</option>
+                                {mascotas.map((mascota) => (
+                                    <option key={mascota.ID_Mascota} value={mascota.ID_Mascota}>
+                                        {mascota.Nombre_Mascota}
+                                    </option>
+                                ))}
+                            </select>
+
+                            <label>Fecha:</label>
+                            <input
+                                className="form-control mb-3 bg-light"
+                                type="datetime-local"
+                                min={moment().format('YYYY-MM-DDTHH:mm')}
+                                onChange={(e) => setSelectedDate(moment(e.target.value).format('YYYY-MM-DDTHH:mm'))}
+                                value={selectedDate}
+                                required
+                            />
+                            <button className="btn btn-success mt-3" type="submit">
+                                AGENDAR
+                            </button>
+                        </form>
+                    </div>
+                    <div className="container my-5 border-start rounded p-5">
+                        <h2 className="text-center mb-4">Citas</h2>
+                        <div className="d-flex justify-content-center">
+                            <table className="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Servicio</th>
+                                        <th scope="col">Mascota</th>
+                                        <th scope="col">Fecha</th>
+                                        <th scope="col">Hora</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {citas.map((cita) => (
+                                        <tr key={cita.ID_Cita}>
+                                            <td>{cita.Motivo_Cita}</td>
+                                            <td>{cita.Nombre_Mascota}</td>
+                                            <td>{moment(cita.Fecha_Cita).format('DD/MM/YYYY')}</td>
+                                            <td>{moment(cita.Fecha_Cita).format('hh:mm A')}</td>
+                                        </tr>
+                                    ))}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    );
+};
+
+export default AgendamientoMedicina;
