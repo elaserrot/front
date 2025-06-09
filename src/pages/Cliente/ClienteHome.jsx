@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 import Swal from 'sweetalert2';
-import API from "../../api/api";
+
 const API = process.env.API_URL || "http://localhost:3001";
 
 
