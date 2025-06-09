@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+
 import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
 
@@ -19,7 +19,7 @@ export default function ProductView() {
         e.preventDefault();
         try {
             setIsLoading(true);
-            const response = await axios.post(`${BACKEND_URL}/api/carrito/agregar/${id_usuario}`, {
+            const response = await API.post(`/carrito/agregar/${id_usuario}`, {
                 cantidad: 1,
                 id_producto: id_producto
             });
@@ -41,7 +41,7 @@ export default function ProductView() {
     useEffect(() => {
         const fetchProducto = async () => {
             try {
-                const response = await axios.get(`${BACKEND_URL}/api/productos/listar/${id_producto}`);
+                const response = await API.get(`/productos/listar/${id_producto}`);
                 setProducto(response.data[0]);
             } catch (error) {
                 console.error("Error al obtener los productos:", error);

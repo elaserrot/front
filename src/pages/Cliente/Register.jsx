@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Footer from '../../components/Footer';
 import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
-import axios from 'axios';
+;
 
 export default function Register() {
   const [user, setUser] = useState({
@@ -29,7 +29,7 @@ export default function Register() {
     }
 
     try {
-      const response = await axios.post("http://localhost:3001/api/usuarios/agregar", user);
+      const response = await API.post("http://localhost:3001/api/usuarios/agregar", user);
       console.log(response.data);
       if (response.status === 200) {
         Swal.fire({

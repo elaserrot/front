@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import axios from "axios";
+
 import Swal from "sweetalert2";
 
 const BACKEND_URL = "http://localhost:3001";
@@ -22,7 +22,7 @@ export default function Index() {
         const fetchProductos = async () => {
             try {
                 setIsLoadingProductos(true);
-                const response = await axios.get(`${BACKEND_URL}/api/productos/listarLimitado`);
+                const response = await API.get(`/productos/listarLimitado`);
                 setProductos(response.data);
             } catch (error) {
                 console.error("Error al obtener los productos:", error);
@@ -42,7 +42,7 @@ export default function Index() {
         e.preventDefault();
         try {
             setIsLoadingContacto(true);
-            const response = await axios.post(`${BACKEND_URL}/api/contacto/enviar`, contacto);
+            const response = await API.post(`/contacto/enviar`, contacto);
             setIsLoadingContacto(false);
             if (response.status === 200) {
                 setContacto({

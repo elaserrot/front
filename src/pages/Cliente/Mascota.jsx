@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Footer from '../../components/Footer'
 import { Card } from "react-bootstrap";
-import axios from 'axios';
+;
 import Swal from 'sweetalert2';
 
 const BACKEND_URL = "http://localhost:3001";
@@ -39,17 +39,17 @@ function RegistrarMascota() {
 
     const calcularEdad = (fechaNacimiento) => {
         if (!fechaNacimiento) return;
-        
+
         const fechaNac = new Date(fechaNacimiento);
         const hoy = new Date();
-        
+
         let edad = hoy.getFullYear() - fechaNac.getFullYear();
         const mes = hoy.getMonth() - fechaNac.getMonth();
-        
+
         if (mes < 0 || (mes === 0 && hoy.getDate() < fechaNac.getDate())) {
             edad--;
         }
-        
+
         setMascota(prevState => ({
             ...prevState,
             Edad_Mascota: edad
@@ -59,7 +59,7 @@ function RegistrarMascota() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post(`${BACKEND_URL}/api/mascota/agregarMascota`, mascota);
+            const response = await API.post(`/mascota/agregarMascota`, mascota);
             if (response.status === 200) {
                 Swal.fire({
                     icon: 'success',
@@ -113,9 +113,9 @@ function RegistrarMascota() {
                                             name="Fecha_nacimiento"
                                             value={mascota.Fecha_nacimiento}
                                             onChange={(e) => {
-                                            handleChange(e); 
-                                            calcularEdad(e.target.value); 
-                                        }}
+                                                handleChange(e);
+                                                calcularEdad(e.target.value);
+                                            }}
                                             className="form-control"
                                         />
                                     </div>

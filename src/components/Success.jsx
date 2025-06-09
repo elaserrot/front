@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
+
 import Swal from "sweetalert2";
 
 const BACKEND_URL = "http://localhost:3001";
@@ -31,14 +31,14 @@ export default function Success() {
                 const userId = decodedToken.id;
 
                 // Confirmar el pago con el backend
-                const { status: confirmStatus } = await axios.post(`${BACKEND_URL}/api/compras/confirmar-pago/${userId}`, {
+                const { status: confirmStatus } = await API.post(`/compras/confirmar-pago/${userId}`, {
                     paymentId,
                     status,
                 });
 
                 if (confirmStatus === 200) {
                     // Vaciar el carrito
-                    await axios.delete(`${BACKEND_URL}/api/carrito/eliminarCarrito/${userId}`);
+                    await API.delete(`/carrito/eliminarCarrito/${userId}`);
 
                     await Swal.fire({
                         title: 'Pago confirmado',

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
+;
 
 const BACKEND_URL = 'http://localhost:3001';
 
@@ -18,7 +18,7 @@ export default function CarritoCompras() {
     useEffect(() => {
         const fetchCarrito = async () => {
             try {
-                const response = await axios.get(`${BACKEND_URL}/api/carrito/listar/${id}`);
+                const response = await API.get(`/carrito/listar/${id}`);
                 setCarrito(response.data);
             } catch (error) {
                 console.error("Error al obtener el carrito:", error);
@@ -32,10 +32,10 @@ export default function CarritoCompras() {
     const manejarCantidad = (id_producto, operacion) => {
         try {
             if (operacion == "incrementar") {
-                axios.put(`${BACKEND_URL}/api/carrito/sumarCantidad/${id}`, { id_producto });
+                API.put(`/carrito/sumarCantidad/${id}`, { id_producto });
                 setIsDataUpdated(true);
             } else if (operacion === "decrementar") {
-                axios.put(`${BACKEND_URL}/api/carrito/restarCantidad/${id}`, { id_producto });
+                API.put(`/carrito/restarCantidad/${id}`, { id_producto });
                 setIsDataUpdated(true);
             }
         }
@@ -46,7 +46,7 @@ export default function CarritoCompras() {
 
     const eliminarProducto = async (id_producto) => {
         try {
-            await axios.delete(`${BACKEND_URL}/api/carrito/eliminarProducto/${id}`, { data: { id_producto } });
+            await API.delete(`/carrito/eliminarProducto/${id}`, { data: { id_producto } });
             setIsDataUpdated(true);
         } catch (error) {
             console.error("Error al eliminar el producto:", error);

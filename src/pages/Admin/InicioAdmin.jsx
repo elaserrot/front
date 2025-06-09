@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import axios from 'axios';
+;
 const BACKEND_URL = 'http://localhost:3001';
 import moment from 'moment';
 
@@ -12,7 +12,7 @@ export default function InicioAdmin() {
     useEffect(() => {
         const fetchAgendados = async () => {
             try {
-                const response = await axios.get(`${BACKEND_URL}/api/citas/listarCitas`);
+                const response = await API.get(`/citas/listarCitas`);
                 setAgendados(response.data);
             } catch (error) {
                 console.error(error);
@@ -20,7 +20,7 @@ export default function InicioAdmin() {
         };
         const fetchPedidos = async () => {
             try {
-                const response = await axios.get(`${BACKEND_URL}/api/pedidos/listarPedidos`);
+                const response = await API.get(`/pedidos/listarPedidos`);
                 setPedidos(response.data);
             } catch (error) {
                 console.error(error);

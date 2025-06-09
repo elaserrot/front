@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+;
 import { BarChart, Bar, XAxis, YAxis, Tooltip, CartesianGrid, ResponsiveContainer, LineChart, Line } from "recharts";
 import moment from 'moment';
 import Swal from 'sweetalert2';
@@ -15,7 +15,7 @@ export default function AdminReportes() {
     useEffect(() => {
         const obtenerProductos = async () => {
             try {
-                const response = await axios.get(`${BACKEND_URL}/api/citas/listarCitas`);
+                const response = await API.get(`/citas/listarCitas`);
                 setCitas(response.data);
             } catch (error) {
                 console.error('Error al obtener citas:', error);
@@ -24,7 +24,7 @@ export default function AdminReportes() {
 
         const obtenerVentas = async () => {
             try {
-                const response = await axios.get(`${BACKEND_URL}/api/compras/listar`);
+                const response = await API.get(`/compras/listar`);
                 setVentas(response.data);
             } catch (error) {
                 console.error('Error al obtener ventas:', error);

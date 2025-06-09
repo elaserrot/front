@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Modal, Button } from "react-bootstrap";
-import axios from 'axios';
+;
 import moment from 'moment';
 import Swal from 'sweetalert2';
 
@@ -17,7 +17,7 @@ export default function AdminClientes() {
     useEffect(() => {
         const obtenerClientes = async () => {
             try {
-                const response = await axios.get(`${BACKEND_URL}/api/usuarios/clientes/`);
+                const response = await API.get(`/usuarios/clientes/`);
                 setClientes(response.data);
             } catch (error) {
                 console.error('Error al obtener clientes:', error);
@@ -39,7 +39,7 @@ export default function AdminClientes() {
         if (!confirm.isConfirmed) {
             return;
         }
-        const response = await axios.delete(`${BACKEND_URL}/api/usuarios/eliminar/${id}`)
+        const response = await API.delete(`/usuarios/eliminar/${id}`)
         if (response.status === 200) {
             await Swal.fire({
                 icon: 'success',

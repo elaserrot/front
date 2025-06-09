@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+;
 import Swal from 'sweetalert2';
 import moment from 'moment';
 const BACKEND_URL = 'http://localhost:3001';
@@ -21,7 +21,7 @@ export default function AdminAgendamiento() {
     useEffect(() => {
         const fetchCitas = async () => {
             try {
-                const response = await axios.get(`${BACKEND_URL}/api/citas/listarCitas`);
+                const response = await API.get(`/citas/listarCitas`);
                 setCitas(response.data);
             } catch (error) {
                 console.error(error);
@@ -48,7 +48,7 @@ export default function AdminAgendamiento() {
             if (!confirm.isConfirmed) {
                 return;
             }
-            const response = await axios.put(`${BACKEND_URL}/api/citas/cambiarEstado/${id}`, { Estado_Cita: nuevoEstado });
+            const response = await API.put(`/citas/cambiarEstado/${id}`, { Estado_Cita: nuevoEstado });
 
             if (response.status == 200) {
                 Swal.fire({

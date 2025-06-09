@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+;
 import Swal from 'sweetalert2';
 
 const BACKEND_URL = 'http://localhost:3001';
@@ -23,7 +23,7 @@ export default function Checkout() {
     useEffect(() => {
         const fetchCarrito = async () => {
             try {
-                const response = await axios.get(`${BACKEND_URL}/api/carrito/listar/${id}`);
+                const response = await API.get(`/carrito/listar/${id}`);
                 setCarrito(response.data);
             } catch (error) {
                 console.error("Error al obtener el carrito:", error);

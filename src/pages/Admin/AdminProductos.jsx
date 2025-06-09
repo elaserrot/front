@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Modal, Button } from "react-bootstrap";
-import axios from 'axios';
+;
 import moment from 'moment';
 import Swal from 'sweetalert2';
 
@@ -18,7 +18,7 @@ export default function AdminProductos() {
     useEffect(() => {
         const obtenerProductos = async () => {
             try {
-                const response = await axios.get(`${BACKEND_URL}/api/productos/listar`);
+                const response = await API.get(`/productos/listar`);
                 setProductos(response.data);
             } catch (error) {
                 console.error('Error al obtener productos:', error);
@@ -26,7 +26,7 @@ export default function AdminProductos() {
         };
         const fetchCategorias = async () => {
             try {
-                const response = await axios.get(`${BACKEND_URL}/api/categorias/listar`);
+                const response = await API.get(`/categorias/listar`);
                 setCategorias(response.data);
             } catch (error) {
                 console.error(error);
@@ -50,7 +50,7 @@ export default function AdminProductos() {
         if (!confirm.isConfirmed) {
             return;
         }
-        const response = await axios.delete(`${BACKEND_URL}/api/productos/eliminar/${id}`)
+        const response = await API.delete(`/productos/eliminar/${id}`)
         if (response.status === 200) {
             await Swal.fire({
                 icon: 'success',
@@ -107,7 +107,7 @@ export default function AdminProductos() {
             formData.append('stock', producto.stock);
             formData.append('id_cate', producto.id_cate);
             console.log(producto);
-            const response = await axios.put(`${BACKEND_URL}/api/productos/actualizar/${producto.id_producto}`, formData);
+            const response = await API.put(`/productos/actualizar/${producto.id_producto}`, formData);
             if (response.status === 200) {
                 setIsDataUpdated(true);
                 Swal.fire({

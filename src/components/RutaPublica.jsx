@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Navigate, Outlet } from 'react-router-dom';
-import axios from 'axios';
+;
 import Swal from 'sweetalert2';
 
 const BACKEND_URL = "http://localhost:3001";
@@ -19,7 +19,7 @@ export default function RutaPublica() {
                         'Authorization': `Bearer ${token}`,
                     },
                 };
-                const res = await axios.get(`${BACKEND_URL}/api/auth/validarToken`, config);
+                const res = await API.get(`/auth/validarToken`, config);
                 setUserRole(res.data.rol);
             } catch (err) {
                 console.error(err);

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import axios from "axios";
+
 import Swal from "sweetalert2";
 import moment from "moment";
 const BACKEND_URL = "http://localhost:3001";
@@ -21,7 +21,7 @@ export default function PerfilUsuario() {
     useEffect(() => {
         const fetchProfile = async () => {
             try {
-                const response = await axios.get(`${BACKEND_URL}/api/usuarios/perfil/${id}`, {
+                const response = await API.get(`/usuarios/perfil/${id}`, {
                     headers: {
                         Authorization: `Bearer ${token}`,
                     },
@@ -39,7 +39,7 @@ export default function PerfilUsuario() {
         };
         const fetchMascotas = async () => {
             try {
-                const response = await axios.get(`${BACKEND_URL}/api/mascota/cliente/${id}`, {
+                const response = await API.get(`/mascota/cliente/${id}`, {
                     headers: {
                         Authorization: `Bearer ${token}`,
                     },
@@ -92,7 +92,7 @@ export default function PerfilUsuario() {
                 formData.append('imagen', newImage);
             }
 
-            await axios.put(`${BACKEND_URL}/api/usuarios/${profile.id_usuario}`, formData, {
+            await API.put(`/usuarios/${profile.id_usuario}`, formData, {
                 headers: {
                     Authorization: `Bearer ${token}`,
                     'Content-Type': 'multipart/form-data',
@@ -123,7 +123,7 @@ export default function PerfilUsuario() {
         if (!confirm.isConfirmed) {
             return;
         }
-        const response = await axios.delete(`${BACKEND_URL}/api/mascota/eliminarMascota/${id}`)
+        const response = await API.delete(`/mascota/eliminarMascota/${id}`)
         if (response.status === 200) {
             await Swal.fire({
                 icon: 'success',
@@ -192,7 +192,7 @@ export default function PerfilUsuario() {
     const handleModalSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.put(`${BACKEND_URL}/api/mascota/actualizarMascota/${mascotaEditar.id_mascota}`, mascotaEditar);
+            const response = await API.put(`/mascota/actualizarMascota/${mascotaEditar.id_mascota}`, mascotaEditar);
             if (response.status === 200) {
                 const cerrarBoton = document.getElementById('cerrar');
                 cerrarBoton.click();
@@ -219,7 +219,7 @@ export default function PerfilUsuario() {
 
     return (
         <div className="d-flex flex-column min-vh-100">
-           
+
 
             <header className="bg-white py-3 border-bottom">
                 <div className="container">

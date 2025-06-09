@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { BarChart, Bar, XAxis, YAxis, Tooltip, CartesianGrid, ResponsiveContainer } from 'recharts';
-import axios from 'axios';
+;
 import moment from 'moment';
 
 const BACKEND_URL = 'http://localhost:3001';
@@ -16,7 +16,7 @@ export default function AdminVentas() {
     useEffect(() => {
         const obtenerProductos = async () => {
             try {
-                const response = await axios.get(`${BACKEND_URL}/api/productos/listarLimitado`);
+                const response = await API.get(`/productos/listarLimitado`);
                 setProductos(response.data);
             } catch (error) {
                 console.error('Error al obtener productos:', error);
@@ -25,7 +25,7 @@ export default function AdminVentas() {
 
         const obtenerVentas = async () => {
             try {
-                const response = await axios.get(`${BACKEND_URL}/api/compras/listar`);
+                const response = await API.get(`/compras/listar`);
                 setVentas(response.data);
             } catch (error) {
                 console.error('Error al obtener ventas:', error);
@@ -39,6 +39,7 @@ export default function AdminVentas() {
     return (
         <div>
             <h3 className="mb-4">Gestión de Ventas</h3>
+            <Link to="/agregarventa" className="btn btn-primary mb-3">Generar ventas</Link>
             <div className="row">
                 <div className="col-8">
                     <div className="card">
@@ -58,6 +59,7 @@ export default function AdminVentas() {
                         <div className="card-header bg-primary text-white">Últimas Ventas</div>
                         <div className="card-body">
                             <ul className="list-group list-group-flush">
+                                {ventas.length === 0 && <li className="list-group-item">No hay ventas registradas.</li>}
                                 {ventas.slice(0, 5).map(venta => (
                                     <li key={venta.id} className="list-group-item">
                                         {venta.descripcion} - ${venta.monto}
@@ -73,7 +75,6 @@ export default function AdminVentas() {
                         <thead>
                             <tr>
                                 <th className="fw-bold">Fecha</th>
-                                <th>Cliente</th>
                                 <th>Descripción</th>
                                 <th>Monto</th>
                             </tr>
@@ -86,7 +87,6 @@ export default function AdminVentas() {
                                             {moment(venta.created_at).format('DD/MM/YYYY')}
                                         </span>
                                     </td>
-                                    <td>{venta.nombre_completo}</td>
                                     <td>{venta.descripcion}</td>
                                     <td>${venta.monto}</td>
                                 </tr>

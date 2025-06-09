@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
 import Footer from "../../components/Footer"
-import axios from "axios"
+
 
 export default function OlvidoContraseña() {
   const [email, setEmail] = useState("")
@@ -23,7 +23,7 @@ export default function OlvidoContraseña() {
     setMensaje("")
 
     try {
-      const response = await axios.post("http://localhost:3001/api/auth/enviarCodigo", {
+      const response = await API.post("http://localhost:3001/api/auth/enviarCodigo", {
         email
       });
 

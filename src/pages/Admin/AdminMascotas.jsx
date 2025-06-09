@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Modal, Button } from "react-bootstrap";
-import axios from 'axios';
+;
 import moment from 'moment';
 import Swal from 'sweetalert2';
 
@@ -18,7 +18,7 @@ export default function AdminMascotas() {
     useEffect(() => {
         const obtenerMascotas = async () => {
             try {
-                const response = await axios.get(`${BACKEND_URL}/api/mascota/listarMascotas`);
+                const response = await API.get(`/mascota/listarMascotas`);
                 setMascotas(response.data);
             } catch (error) {
                 console.error('Error al obtener mascotas:', error);
@@ -40,7 +40,7 @@ export default function AdminMascotas() {
         if (!confirm.isConfirmed) {
             return;
         }
-        const response = await axios.delete(`${BACKEND_URL}/api/mascota/eliminarMascota/${id}`)
+        const response = await API.delete(`/mascota/eliminarMascota/${id}`)
         if (response.status === 200) {
             await Swal.fire({
                 icon: 'success',

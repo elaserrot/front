@@ -29,6 +29,7 @@ import AdminAgregarClientes from "./pages/Admin/AdminAgregarClientes";
 import AdminAgendamiento from "./pages/Admin/AdminAgendamiento";
 import AdminReportes from "./pages/Admin/AdminReportes";
 import AdminConfiguracion from "./pages/Admin/AdminConfiguracion";
+import AdminAgregarVenta from "./pages/Admin/AdminAgregarVenta";
 
 import RutaPublica from "./components/RutaPublica";
 import RutaPrivada from "./components/RutaPrivada";
@@ -95,6 +96,7 @@ function App() {
             <Route path="/agendamiento" element={<AdminAgendamiento />} />
             <Route path="/reportes" element={<AdminReportes />} />
             <Route path="/configuracion" element={<AdminConfiguracion />} />
+            <Route path="/agregarventa" element={<AdminAgregarVenta />} />
           </Route>
         </Route>
         <Route path="*" element={<div className="text-center mt-5">404 Not Found</div>} />

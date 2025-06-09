@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Card } from "react-bootstrap";
-import axios from 'axios';
+;
 import Swal from 'sweetalert2';
 const BACKEND_URL = 'http://localhost:3001';
 
@@ -11,7 +11,7 @@ export default function AgregarProducto() {
     useEffect(() => {
         const fetchCategorias = async () => {
             try {
-                const response = await axios.get(`${BACKEND_URL}/api/categorias/listar`);
+                const response = await API.get(`/categorias/listar`);
                 setCategorias(response.data);
             } catch (error) {
                 console.error(error);
@@ -51,7 +51,7 @@ export default function AgregarProducto() {
             formData.append('stock', producto.stock);
             formData.append('categoria', producto.categoria);
             console.log(formData);
-            const response = await axios.post(`${BACKEND_URL}/api/productos/agregar`, formData);
+            const response = await API.post(`/productos/agregar`, formData);
             if (response.status === 200) {
                 Swal.fire({
                     icon: 'success',

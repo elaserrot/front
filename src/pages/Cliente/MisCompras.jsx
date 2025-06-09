@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import axios from 'axios'
+
 import Swal from 'sweetalert2'
 import { Link } from 'react-router-dom'
 import moment from 'moment'
@@ -18,7 +18,7 @@ export default function MisCompras() {
     useEffect(() => {
         const obtenerCompras = async () => {
             try {
-                const response = await axios.get(`${BACKEND_URL}/api/compras/listar/cliente/${id}`)
+                const response = await API.get(`/compras/listar/cliente/${id}`)
                 setCompras(response.data)
             } catch (error) {
                 console.error('Error al obtener las compras:', error)

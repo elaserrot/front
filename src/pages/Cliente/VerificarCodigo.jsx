@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react"
 import { useLocation, useNavigate } from "react-router-dom"
-import axios from "axios"
+
 import Swal from "sweetalert2"
 
 export default function VerificarCodigo() {
@@ -37,7 +37,7 @@ export default function VerificarCodigo() {
     setLoading(true)
 
     try {
-      const response = await axios.post("http://localhost:3001/api/auth/verificarCodigo", data);
+      const response = await API.post("http://localhost:3001/api/auth/verificarCodigo", data);
       if (response.status === 200) {
         Swal.fire({
           icon: 'success',

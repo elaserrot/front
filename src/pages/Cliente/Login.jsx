@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 import { Link } from "react-router-dom"
 import Footer from '../../components/Footer'
-import axios from 'axios'
+
 import Swal from 'sweetalert2';
 import { useAuth } from '../../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
@@ -26,7 +26,7 @@ export default function Login() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post('http://localhost:3001/api/usuarios/login', {
+            const response = await API.post('http://localhost:3001/api/usuarios/login', {
                 correo: user.correo,
                 password: user.password
             });

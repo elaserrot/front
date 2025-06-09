@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import Footer from '../../components/Footer'
 import NabvarC from '../../components/NavbarC'
 import { Link } from 'react-router-dom'
-import axios from 'axios'
+
 
 const BACKEND_URL = "http://localhost:3001";
 
@@ -17,7 +17,7 @@ export default function Productos() {
     const fetchProductos = async () => {
       try {
         setIsLoading(true);
-        const response = await axios.get(`${BACKEND_URL}/api/productos/listar`);
+        const response = await API.get(`/productos/listar`);
         setAllProductos(response.data);
         setDisplayedProductos(response.data);
         setIsLoading(false);
@@ -28,7 +28,7 @@ export default function Productos() {
 
     const fetchCategorias = async () => {
       try {
-        const response = await axios.get(`${BACKEND_URL}/api/categorias/listar`);
+        const response = await API.get(`/categorias/listar`);
         setCategorias(response.data);
       } catch (error) {
         console.error("Error al obtener las categorias:", error);

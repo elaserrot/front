@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import 'react-calendar/dist/Calendar.css';
-import axios from 'axios';
+;
 import { useParams } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import moment from 'moment';
@@ -33,7 +33,7 @@ const AgendamientoMedicina = () => {
                 Mascota: mascota
             };
 
-            const response = await axios.post('http://localhost:3001/api/citas/agregarCita', nuevaCita);
+            const response = await API.post('http://localhost:3001/api/citas/agregarCita', nuevaCita);
             Swal.fire({
                 icon: 'success',
                 title: 'Cita agendada con éxito',
@@ -56,7 +56,7 @@ const AgendamientoMedicina = () => {
     useEffect(() => {
         const fetchMascotas = async () => {
             try {
-                const response = await axios.get(`${BACKEND_URL}/api/mascota/cliente/${id}`, {
+                const response = await API.get(`/mascota/cliente/${id}`, {
                     headers: {
                         Authorization: `Bearer ${token}`,
                     },
@@ -75,7 +75,7 @@ const AgendamientoMedicina = () => {
 
         const fetchCitas = async () => {
             try {
-                const response = await axios.get(`${BACKEND_URL}/api/citas/listarCitas/${id}`, {
+                const response = await API.get(`/citas/listarCitas/${id}`, {
                     headers: {
                         Authorization: `Bearer ${token}`,
                     },
