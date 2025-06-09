@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import API from "../../api/api";
+
 import Swal from "sweetalert2";
 import moment from "moment";
 const API = process.env.API_URL || "http://localhost:3001";
