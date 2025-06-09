@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Navigate, Outlet } from 'react-router-dom';
-import API from '../../api/api';
+import API from '../api/api';
 import Swal from 'sweetalert2';
 
 export default function RutaPrivada({ requiredRole }) {
