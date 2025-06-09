@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Navigate, Outlet } from 'react-router-dom';
 import Swal from 'sweetalert2';
-import API from '../api';
 const API_URL = "http://localhost:3001";
 
 export default function RutaPublica() {
