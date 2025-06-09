@@ -2,8 +2,8 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 import Swal from "sweetalert2";
-
-const BACKEND_URL = "http://localhost:3001";
+import API from "../../api/api";
+const API = process.env.API_URL || "http://localhost:3001";
 
 export default function Index() {
     const [seccionActiva, setSeccionActiva] = useState("consulta");
@@ -151,7 +151,7 @@ export default function Index() {
                             productos.map((producto) => (
                                 <div key={producto.id_producto} className="col mb-4">
                                     <div className="card">
-                                        <img src={`${BACKEND_URL}/PRODUCTOS_FOTOS/${producto.imagen}`} className="card-img-top" style={{ height: "200px", width: "100%", objectFit: "cover" }} alt="Producto 1" />
+                                        <img src={`${API_URL}/PRODUCTOS_FOTOS/${producto.imagen}`} className="card-img-top" style={{ height: "200px", width: "100%", objectFit: "cover" }} alt="Producto 1" />
                                         <div className="card-body text-center">
                                             <h6>{producto.nombre_producto}</h6>
                                             <Link to={`/producto/${producto.id_producto}`} className="btn btn-primary">Comprar ahora</Link>

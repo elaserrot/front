@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { BarChart, Bar, XAxis, YAxis, Tooltip, CartesianGrid, ResponsiveContainer } from 'recharts';
 ;
 import moment from 'moment';
+import API from '../../api/api';
 
 const BACKEND_URL = 'http://localhost:3001';
 

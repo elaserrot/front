@@ -2,8 +2,9 @@ import React, { useEffect, useState } from "react";
 
 import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
+import API from "../../api/api";
 
-const BACKEND_URL = "http://localhost:3001";
+const API_URL = process.env.API_URL || "http://localhost:3001";
 
 export default function ProductView() {
 
@@ -59,7 +60,7 @@ export default function ProductView() {
                         {/* Imágen*/}
                         <div className="d-flex">
                             <img
-                                src={`${BACKEND_URL}/PRODUCTOS_FOTOS/${producto?.imagen}`}
+                                src={`${API_URL}/PRODUCTOS_FOTOS/${producto?.imagen}`}
                                 className="img-fluid me-2 "
                                 alt="Imagen pequeña 4"
                                 data-bs-target="#carouselExample"

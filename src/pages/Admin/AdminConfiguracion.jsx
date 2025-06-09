@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Button, Form } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import API from '../../api/api';
 
 export default function ConfiguracionAdmin() {
     const [adminData, setAdminData] = useState({

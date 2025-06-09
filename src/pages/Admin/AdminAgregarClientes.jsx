@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Form, Button, Container, Card } from "react-bootstrap";
 import { Link } from 'react-router-dom';
 import Footer from '../../components/Footer';
-
+import API from '../../api/api';
 const AgregarCliente = () => {
   const [cliente, setCliente] = useState({
     nombre: "",

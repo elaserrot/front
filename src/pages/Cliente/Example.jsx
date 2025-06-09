@@ -1,4 +1,5 @@
 import React from 'react'
+import API from '../../api/api'
 
 export default function InicioAdmin() {
     return (

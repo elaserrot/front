@@ -1,6 +1,6 @@
 
 import React from "react";
-
+import API from "../../api/api";
 const Nosotros = () => {
     return (
         <section className="py-5 bg-light">

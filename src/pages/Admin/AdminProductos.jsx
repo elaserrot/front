@@ -4,8 +4,8 @@ import { Modal, Button } from "react-bootstrap";
 ;
 import moment from 'moment';
 import Swal from 'sweetalert2';
-
-const BACKEND_URL = 'http://localhost:3001';
+import API from '../../api/api';
+const API = process.env.API_URL || "http://localhost:3001";
 
 export default function AdminProductos() {
 
@@ -160,7 +160,7 @@ export default function AdminProductos() {
                             <div className="card mb-4">
                                 <div className="card-body d-flex justify-content-between align-items-center">
                                     <img
-                                        src={`${BACKEND_URL}/PRODUCTOS_FOTOS/${producto?.imagen}`}
+                                        src={`${API_URL}/PRODUCTOS_FOTOS/${producto?.imagen}`}
                                         alt={producto?.nombre_producto}
                                         className="rounded"
                                         style={{ height: "100px", width: "100px", objectFit: "cover" }} />
@@ -196,7 +196,7 @@ export default function AdminProductos() {
                                     <label>Imagen:</label>
                                     {imagePreview ? <img src={imagePreview} alt="Preview" className="rounded" style={{ height: "100px", width: "100px", objectFit: "cover" }} />
                                         :
-                                        <img src={`${BACKEND_URL}/PRODUCTOS_FOTOS/${producto?.imagen}`} alt={producto?.nombre_producto} className="rounded" style={{ height: "100px", width: "100px", objectFit: "cover" }} />
+                                        <img src={`${API_URL}/PRODUCTOS_FOTOS/${producto?.imagen}`} alt={producto?.nombre_producto} className="rounded" style={{ height: "100px", width: "100px", objectFit: "cover" }} />
                                     }
                                     <input
                                         className='form-control w-50 my-3'
@@ -275,7 +275,7 @@ export default function AdminProductos() {
                         <div className="row d-flex align-items-start">
                             <div className="col-md-4">
                                 <img
-                                    src={`${BACKEND_URL}/PRODUCTOS_FOTOS/${productoSeleccionado?.imagen}`}
+                                    src={`${API_URL}/PRODUCTOS_FOTOS/${productoSeleccionado?.imagen}`}
                                     alt={productoSeleccionado?.nombre_producto}
                                     className="img-fluid rounded"
                                     style={{ height: "300px", objectFit: "cover" }} />

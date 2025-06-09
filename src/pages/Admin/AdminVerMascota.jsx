@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { Modal, Button } from "react-bootstrap";
 import Footer from '../../components/Footer';
 import Navbar from '../../components/Navbar';
+import API from '../../api/api';
 
 const ListaMascotas = () => {
     const [mascotaSeleccionada, setMascotaSeleccionada] = useState(null);

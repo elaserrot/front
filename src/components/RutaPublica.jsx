@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { Navigate, Outlet } from 'react-router-dom';
-;
 import Swal from 'sweetalert2';
-
-const BACKEND_URL = "http://localhost:3001";
+import API from '../api';
+const API_URL = "http://localhost:3001";
 
 export default function RutaPublica() {
     const [userRole, setUserRole] = useState(null);

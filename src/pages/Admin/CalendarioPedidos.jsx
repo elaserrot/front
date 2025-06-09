@@ -1,5 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import API from '../../api/api';
+
 
 const pedidos = [
     { date: new Date(2025, 2, 5), title: "Pedido #101" },

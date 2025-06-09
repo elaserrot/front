@@ -3,6 +3,7 @@ import Footer from '../../components/Footer';
 import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 ;
+import API from '../../api/api';
 
 export default function Register() {
   const [user, setUser] = useState({

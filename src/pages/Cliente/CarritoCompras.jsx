@@ -2,9 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 ;
-
-const BACKEND_URL = 'http://localhost:3001';
-
+import API from '../../api/api';
+const API = process.env.API_URL || "http://localhost:3001";
 export default function CarritoCompras() {
 
     const token = localStorage.getItem('token');
@@ -75,7 +74,7 @@ export default function CarritoCompras() {
                                         <div className="row mb-3" key={producto.id_producto}>
                                             <div className="col-md-3">
                                                 <img
-                                                    src={`${BACKEND_URL}/PRODUCTOS_FOTOS/${producto.imagen}`}
+                                                    src={`${API_URL}/PRODUCTOS_FOTOS/${producto.imagen}`}
                                                     alt={producto.nombre_producto}
                                                     className="img-fluid rounded"
                                                 />

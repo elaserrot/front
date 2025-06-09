@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 ;
 import Swal from 'sweetalert2';
-
-const BACKEND_URL = 'http://localhost:3001';
+import API from '../../api/api';
+const API = process.env.API_URL || "http://localhost:3001";
 
 export default function Checkout() {
     const [isDataUpdated, setIsDataUpdated] = useState(false);
@@ -147,7 +147,7 @@ export default function Checkout() {
                         carrito.map((producto, index) => (
                             <div key={index} className="card mb-3">
                                 <div className="card-body d-flex justify-content-between align-items-center">
-                                    <img className='w-25 rounded' src={`${BACKEND_URL}/PRODUCTOS_FOTOS/${producto.imagen}`} alt="" />
+                                    <img className='w-25 rounded' src={`${API_URL}/PRODUCTOS_FOTOS/${producto.imagen}`} alt="" />
                                     <span className=''>{producto.nombre_producto.substring(0, 25) + (producto.nombre_producto.length > 25 ? "..." : "")}</span>
                                     <span>${formatNumber(producto.precio)}</span>
                                 </div>

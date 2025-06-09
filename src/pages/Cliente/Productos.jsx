@@ -2,9 +2,9 @@ import React, { useEffect, useState } from 'react'
 import Footer from '../../components/Footer'
 import NabvarC from '../../components/NavbarC'
 import { Link } from 'react-router-dom'
+import API from '../../api/api'
 
-
-const BACKEND_URL = "http://localhost:3001";
+const API_URL = process.env.API_URL || "http://localhost:3001";
 
 export default function Productos() {
   const [isLoading, setIsLoading] = useState(true);
@@ -97,7 +97,7 @@ export default function Productos() {
                 {displayedProductos.map((producto) => (
                   <div key={producto.id_producto} className="col-md-4">
                     <div className="card">
-                      <img src={`${BACKEND_URL}/PRODUCTOS_FOTOS/${producto.imagen}`} style={{ width: "100%", height: "200px", objectFit: "cover" }} className="card-img-top" alt={producto.nombre_producto} />
+                      <img src={`${API_URL}/PRODUCTOS_FOTOS/${producto.imagen}`} style={{ width: "100%", height: "200px", objectFit: "cover" }} className="card-img-top" alt={producto.nombre_producto} />
                       <div className="card-body">
                         <h6 className="card-title">{producto.nombre_producto}</h6>
                         <p className="card-text text-muted">

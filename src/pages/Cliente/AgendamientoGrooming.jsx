@@ -4,6 +4,7 @@ import 'react-calendar/dist/Calendar.css';
 import { useParams } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import moment from 'moment';
+import API from '../../api/api';
 
 const BACKEND_URL = 'http://localhost:3001';
 
