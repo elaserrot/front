@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 ;
 import Swal from 'sweetalert2';
 
+import API from '../../api/api';
 const API_URL = import.meta.env.VITE_API_URL || "http://localhost:3001";
 export default function Checkout() {
     const [isDataUpdated, setIsDataUpdated] = useState(false);
