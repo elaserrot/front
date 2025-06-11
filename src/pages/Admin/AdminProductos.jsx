@@ -4,6 +4,7 @@ import { Modal, Button } from "react-bootstrap";
 ;
 import moment from 'moment';
 import Swal from 'sweetalert2';
+import API from '../../api/api';
 
 const API_URL = import.meta.env.VITE_BACKEND_URL || "http://localhost:3001";
 export default function AdminProductos() {
