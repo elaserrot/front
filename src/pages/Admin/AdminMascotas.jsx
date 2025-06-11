@@ -6,7 +6,7 @@ import moment from 'moment';
 import Swal from 'sweetalert2';
 import API from '../../api/api';
 
-const BACKEND_URL = 'http://localhost:3001';
+;
 
 export default function AdminMascotas() {
 

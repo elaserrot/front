@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 ;
 import Swal from 'sweetalert2';
 import API from '../../api/api';
-const BACKEND_URL = 'http://localhost:3001';
+;
 
 const AdminAgregarVenta = () => {
     const [venta, setVenta] = useState({

@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 import moment from 'moment'
 import API from '../../api/api'
 
-const BACKEND_URL = 'http://localhost:3001'
+
 
 export default function MisCompras() {
 

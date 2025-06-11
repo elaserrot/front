@@ -5,7 +5,7 @@ import { BarChart, Bar, XAxis, YAxis, Tooltip, CartesianGrid, ResponsiveContaine
 import moment from 'moment';
 import API from '../../api/api';
 
-const BACKEND_URL = 'http://localhost:3001';
+;
 
 
 export default function AdminVentas() {
