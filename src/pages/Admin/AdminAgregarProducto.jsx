@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import { Card } from "react-bootstrap";
 ;
 import API from '../../api/api';
@@ -6,6 +7,8 @@ import Swal from 'sweetalert2';
 ;
 
 export default function AgregarProducto() {
+
+    const navigate = useNavigate();
 
     const [categorias, setCategorias] = useState([]);
 
@@ -59,7 +62,7 @@ export default function AgregarProducto() {
                     title: 'Producto agregado',
                     text: 'El producto ha sido agregado con éxito.',
                 }).then(() => {
-                    window.location.href = "/productosadmin";
+                    navigate('/productosadmin');
                     setProducto({
                         nombre_producto: "",
                         descripcion: "",

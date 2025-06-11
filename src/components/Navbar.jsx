@@ -39,18 +39,18 @@ export default function Navegacion() {
                 <div className="text-center">
                     <nav className="mt-4 bg-info text-center">
                         <ul className="nav d-flex justify-content-center text-center align-items-center">
-                            <li className="nav-item "><a href="/ClienteHome" className="nav-link text-dark">Home</a></li>
-                            <li className="nav-item "><a href={ruta ? "/productos" : "#productos"} className="nav-link text-dark">Productos</a></li>
-                            <li className="nav-item "><a href="#servicios" className="nav-link text-dark">Servicios</a></li>
-                            <li className="nav-item "><a href="#contacto" className="nav-link text-dark">Contáctanos</a></li>
-                            <li className="nav-item "><a href={ruta ? "/nosotros" : "#nosotros"} className="nav-link text-dark">Acerca de nosotros</a></li>
+                            <li className="nav-item "><Link to="/ClienteHome" className="nav-link text-dark">Home</Link></li>
+                            <li className="nav-item "><Link to={ruta ? "/productos" : "#productos"} className="nav-link text-dark">Productos</Link></li>
+                            <li className="nav-item "><Link to="#servicios" className="nav-link text-dark">Servicios</Link></li>
+                            <li className="nav-item "><Link to="#contacto" className="nav-link text-dark">Contáctanos</Link></li>
+                            <li className="nav-item "><Link to={ruta ? "/nosotros" : "#nosotros"} className="nav-link text-dark">Acerca de nosotros</Link></li>
                             <li className="nav-item dropdown">
-                                <a className="nav-link dropdown-toggle text-dark" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <Link className="nav-link dropdown-toggle text-dark" to="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                     Servicios
-                                </a>
+                                </Link>
                                 <ul className="dropdown-menu">
-                                    <li><Link to={"/medicina"} className="dropdown-item" href="#">Agendamiento de Medicina</Link></li>
-                                    <li><Link to={"/grooming"} className="dropdown-item" href="#">Agendamiento Grooming</Link></li>
+                                    <li><Link to={"/medicina"} className="dropdown-item" to="#">Agendamiento de Medicina</Link></li>
+                                    <li><Link to={"/grooming"} className="dropdown-item" to="#">Agendamiento Grooming</Link></li>
                                 </ul>
                             </li>
                         </ul>
