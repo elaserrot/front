@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Card } from "react-bootstrap";
 ;
-import API from '../../api/API';
+import API from '../../api/api';
 import Swal from 'sweetalert2';
 const BACKEND_URL = 'http://localhost:3001';
 
