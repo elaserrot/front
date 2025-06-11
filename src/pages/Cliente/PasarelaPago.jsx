@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 ;
 import Swal from 'sweetalert2';
 import API from '../../api/api';
+import { parse } from '@fortawesome/fontawesome-svg-core';
 
 const API_URL = import.meta.env.VITE_BACKEND_URL || "http://localhost:3001";
 export default function Checkout() {
@@ -59,10 +60,10 @@ export default function Checkout() {
         try {
             const body = {
                 title: `Orden - ${carrito.map((producto) => `${producto.cantidad} ${producto.nombre_producto}`).join(', ')}`,
-                unit_price: totalFinal,
+                unit_price: parseFloat(totalFinal),
             }
             console.log(body);
-            const response = await API.post('/compras/crear-pago', { body: JSON.stringify(body), });
+            const response = await API.post('/compras/crear-pago', body);
 
             const data = await response.json();
             console.log('Preferencia de pago creada:', data);
