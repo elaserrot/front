@@ -30,7 +30,7 @@ export default function Register() {
     }
 
     try {
-      const response = await API.post("/api/usuarios/agregar", user);
+      const response = await API.post("/usuarios/agregar", user);
       console.log(response.data);
       if (response.status === 200) {
         Swal.fire({

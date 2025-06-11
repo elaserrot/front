@@ -38,7 +38,7 @@ export default function VerificarCodigo() {
     setLoading(true)
 
     try {
-      const response = await API.post("/api/auth/verificarCodigo", data);
+      const response = await API.post("/auth/verificarCodigo", data);
       if (response.status === 200) {
         Swal.fire({
           icon: 'success',
