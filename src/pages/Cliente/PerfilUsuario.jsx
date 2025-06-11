@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 
 import Swal from "sweetalert2";
 import moment from "moment";
-const API_URL = import.meta.env.VITE_API_URL || "http://localhost:3001";
+const API_URL = import.meta.env.VITE_BACKEND_URL || "http://localhost:3001";
 import API from '../../api/api';
 export default function PerfilUsuario() {
 

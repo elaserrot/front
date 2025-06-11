@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import Swal from 'sweetalert2';
 import API from '../../api/api';
 
-const API_URL = import.meta.env.VITE_API_URL || "http://localhost:3001";
+const API_URL = import.meta.env.VITE_BACKEND_URL || "http://localhost:3001";
 export default function Checkout() {
     const [isDataUpdated, setIsDataUpdated] = useState(false);
 
@@ -62,7 +62,7 @@ export default function Checkout() {
                 unit_price: totalFinal,
             }
             console.log(body);
-            const response = await API.post('/compras/crear-pago', {body: JSON.stringify(body),});
+            const response = await API.post('/compras/crear-pago', { body: JSON.stringify(body), });
 
             const data = await response.json();
             console.log('Preferencia de pago creada:', data);

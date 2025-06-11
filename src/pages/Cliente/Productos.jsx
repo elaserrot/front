@@ -4,7 +4,7 @@ import NabvarC from '../../components/NavbarC'
 import { Link } from 'react-router-dom'
 import API from '../../api/api'
 
-const API_URL = import.meta.env.VITE_API_URL || "http://localhost:3001";
+const API_URL = import.meta.env.VITE_BACKEND_URL || "http://localhost:3001";
 export default function Productos() {
   const [isLoading, setIsLoading] = useState(true);
   const [allProductos, setAllProductos] = useState([]);
