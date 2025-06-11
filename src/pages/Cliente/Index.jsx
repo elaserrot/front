@@ -136,7 +136,7 @@ export default function Index() {
                     <h2 className="fs-1">Bienvenido a Veterinaria</h2>
                     <h2>Ciudad Canina</h2>
                     <p>Descubre la mejor gama de cuidado y servicios para la mascota</p>
-                    <a href="#productos"><button className="btn btn-outline-primary">Conocer más</button></a>
+                    <Link to="#productos"><button className="btn btn-outline-primary">Conocer más</button></Link>
                 </div>
             </div>
             {/* Sección de Productos Nuevos */}
@@ -177,7 +177,7 @@ export default function Index() {
                     <p className="lead bg-info-emphasis">
                         Nuestra clínica está conformada por profesionales altamente capacitados, con amplia experiencia en atención veterinaria y un profundo amor por los animales. Cada uno de nuestros servicios ha sido cuidadosamente diseñado para brindar atención médica de alta calidad, considerando las necesidades individuales de cada uno de nuestros pacientes.
                     </p>
-                    <a href="../Nosotros"><button className="btn btn-outline-primary">Conocer más</button></a>
+                    <Link to="/Nosotros"><button className="btn btn-outline-primary">Conocer más</button></Link>
 
                 </div>
                 <div className="container shadow p-5 rounded-5" id="servicios">
@@ -243,9 +243,9 @@ export default function Index() {
                                 referrerPolicy="no-referrer-when-downgrade"
                             ></iframe>
                             <div>
-                                <a href="#" className="text-decoration-none me-3"><i className="fab fa-facebook"></i></a>
-                                <a href="#" className="text-decoration-none me-3"><i className="fab fa-whatsapp"></i></a>
-                                <a href="#" className="text-decoration-none"><i className="fab fa-instagram"></i></a>
+                                <Link href="#" className="text-decoration-none me-3"><i className="fab fa-facebook"></i></Link>
+                                <Link href="#" className="text-decoration-none me-3"><i className="fab fa-whatsapp"></i></Link>
+                                <Link href="#" className="text-decoration-none"><i className="fab fa-instagram"></i></Link>
                             </div>
                         </div>
                     </div>
