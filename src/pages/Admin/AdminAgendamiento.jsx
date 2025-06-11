@@ -2,8 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Swal from 'sweetalert2';
 import moment from 'moment';
 
-const API_URL = process.env.API_URL || "http://localhost:3001";
-export default function AdminAgendamiento() {
+const API_URL = import.meta.env.VITE_API_URL || "http://localhost:3001"; export default function AdminAgendamiento() {
 
     const [citas, setCitas] = useState([]);
 

@@ -33,7 +33,7 @@ const AgendamientoMedicina = () => {
                 Mascota: mascota
             };
 
-            const response = await API.post('http://localhost:3001/api/citas/agregarCita', nuevaCita);
+            const response = await API.post('/api/citas/agregarCita', nuevaCita);
             Swal.fire({
                 icon: 'success',
                 title: 'Cita agendada con éxito',

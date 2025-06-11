@@ -4,8 +4,7 @@ import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
 import API from "../../api/api";
 
-const API_URL = process.env.API_URL || "http://localhost:3001";
-
+const API_URL = import.meta.env.VITE_API_URL || "http://localhost:3001";
 export default function ProductView() {
 
     const [producto, setProducto] = useState([]);

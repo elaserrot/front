@@ -3,8 +3,7 @@ import { Link } from "react-router-dom";
 
 import Swal from 'sweetalert2';
 
-const API = process.env.API_URL || "http://localhost:3001";
-
+const API_URL = import.meta.env.VITE_API_URL || "http://localhost:3001";
 
 export default function ClienteHome() {
 
@@ -122,13 +121,13 @@ export default function ClienteHome() {
                 </div>
                 <div className="carousel-inner">
                     <div className="carousel-item active">
-                        <img src="/src/img/Banner2.png" className="d-block w-100" alt="..." />
+                        <img src="/img/Banner2.png" className="d-block w-100" alt="..." />
                     </div>
                     <div className="carousel-item">
-                        <img src="/src/img/Banner1.png" className="d-block w-100" alt="..." />
+                        <img src="/img/Banner1.png" className="d-block w-100" alt="..." />
                     </div>
                     <div className="carousel-item">
-                        <img src="/src/img/Banner3.png" className="d-block w-100" alt="..." />
+                        <img src="/img/Banner3.png" className="d-block w-100" alt="..." />
                     </div>
                 </div>
                 <button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">

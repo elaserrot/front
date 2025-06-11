@@ -110,7 +110,7 @@ export default function AdminClientes() {
                         <div className="row d-flex align-items-start">
                             <div className="col-md-4">
                                 <img
-                                    src={clienteSeleccionado?.imagen || "/src/img/dog_placeholder.png"}
+                                    src={clienteSeleccionado?.imagen || "/img/dog_placeholder.png"}
                                     alt={clienteSeleccionado?.nombre_completo}
                                     className="img-fluid rounded"
                                     style={{ height: "300px", objectFit: "cover" }} />

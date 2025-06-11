@@ -27,7 +27,7 @@ export default function Login() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await API.post('http://localhost:3001/api/usuarios/login', {
+            const response = await API.post('/api/usuarios/login', {
                 correo: user.correo,
                 password: user.password
             });

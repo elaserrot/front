@@ -15,7 +15,7 @@ export default function ConfiguracionAdmin() {
         facebook: ''
     });
 
-    const imagenPorDefecto = "/src/img/default-profile.png"; // Imagen por defecto
+    const imagenPorDefecto = "/img/default-profile.png"; // Imagen por defecto
     const [imagenPerfil, setImagenPerfil] = useState(imagenPorDefecto);
 
     const handleChange = (e) => {

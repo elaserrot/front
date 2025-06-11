@@ -24,7 +24,7 @@ export default function OlvidoContraseña() {
     setMensaje("")
 
     try {
-      const response = await API.post("http://localhost:3001/api/auth/enviarCodigo", {
+      const response = await API.post("/api/auth/enviarCodigo", {
         email
       });
 

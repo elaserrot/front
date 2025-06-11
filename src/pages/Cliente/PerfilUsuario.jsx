@@ -3,8 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 
 import Swal from "sweetalert2";
 import moment from "moment";
-const API = process.env.API_URL || "http://localhost:3001";
-
+const API_URL = import.meta.env.VITE_API_URL || "http://localhost:3001";
 export default function PerfilUsuario() {
 
     const [isDataUpdated, setIsDataUpdated] = useState(false);
@@ -226,7 +225,7 @@ export default function PerfilUsuario() {
                     <div className="row align-items-center">
                         <div className="col-md-4 d-flex align-items-center">
                             <img
-                                src="/src/img/logovet.png"
+                                src="/img/logovet.png"
                                 alt="Logo Veterinaria"
                                 className="w-25 rounded-circle me-5"
                             />

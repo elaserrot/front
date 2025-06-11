@@ -3,8 +3,7 @@ import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 ;
 
-const API = process.env.API_URL || "http://localhost:3001";
-export default function CarritoCompras() {
+const API_URL = import.meta.env.VITE_API_URL || "http://localhost:3001"; export default function CarritoCompras() {
 
     const token = localStorage.getItem('token');
     const decoded_token = JSON.parse(atob(token.split('.')[1]));
