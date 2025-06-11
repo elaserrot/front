@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-;
-;
 import moment from 'moment';
 import API from '../../api/api';
 

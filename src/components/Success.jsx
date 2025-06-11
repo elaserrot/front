@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 
 const API_URL = "http://localhost:3001";
+import API from "../../api/api";
 
 export default function Success() {
     const [isLoading, setIsLoading] = useState(true);
