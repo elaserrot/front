@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import Swal from 'sweetalert2';
 
 const API_URL = import.meta.env.VITE_API_URL || "http://localhost:3001";
-
+import API from '../../api/api';
 export default function ClienteHome() {
 
     const renderContenido = () => {
